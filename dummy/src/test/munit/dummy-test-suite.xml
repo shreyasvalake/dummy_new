@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="dummy-test-suite.xml" />
+	<munit:test name="dummy-test-suite-dummyFlowTest" doc:id="945bcaca-053c-426d-8ab9-89046e102e91" description="Test">
+		<munit:execution >
+			<set-payload value="#[payload]" doc:name="Set Payload" doc:id="912eb385-cc58-48a3-9919-94a649f70264" />
+			<flow-ref doc:name="Flow-ref to dummyFlow" doc:id="3ca522d2-b6d6-4bb9-8a30-fc3daaf9ab20" name="dummyFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="fc33e38b-76d2-41f5-800f-a5989cd266d8" actual="#[payload]" expected='#["Hi Dummy"]' message="Payload is correct"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
